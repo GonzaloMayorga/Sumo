@@ -1,0 +1,66 @@
+
+
+HI-TECH Software PICC Macro Assembler V8.05PL2
+Serial number: HCPIC-00000                            Thu Nov 10 14:45:10 2022
+
+Licensed to: MITSOS FOREVER
+     1                           	processor	16F84A
+     2                           	opt	pw 79
+     3                           	psect	__Z00000RS_,global,delta=1
+     4                           	psect	text0,local,class=CODE,delta=2
+     5                           	psect	text1,local,class=CODE,delta=2
+     6  0000                     
+     7  0000                     
+     8  0000                     
+     9  0000                     
+    10  0000                     
+    11  0000                     
+    12  0000                     
+    13  0000                     
+    14  0000                     
+    15  0000                     
+    16                           
+    17                           	psect	__Z00000RS_
+    18  001A                     
+    19  001A                     
+    20                           
+    21                           	psect	text0
+    22  0317                     _delay
+    23                           ;	_cnt assigned to ?a_delay+0
+    24  0000                     _delay$cnt	set	?a_delay
+    25                           ;	_i assigned to ?a_delay+1
+    26  0000                     _delay$i	set	?a_delay+1
+    27                           ;	__dcnt assigned to ?a_delay+2
+    28  0000                     _delay$_dcnt	set	?a_delay+2
+    29                           ;_cnt stored from w
+    30  0317  1283               	bcf	3,5
+    31  0318  0095               	movwf	?a_delay
+    32  0319                     l4
+    33                           ;delay.c: 20: unsigned char i;
+    34                           ;delay.c: 22: i = 4;
+    35  0319  3004               	movlw	4
+    36  031A  0096               	movwf	?a_delay+1
+    37  031B                     l7
+    38                           ;delay.c: 23: do {
+    39                           ;delay.c: 24: { unsigned char _dcnt; _dcnt = (2
+      +                          50)/((12*1000L)/(4*1000L))|1; while(--_dcnt != 
+      +                          0) continue; };
+    40  031B  3053               	movlw	83
+    41  031C  0097               	movwf	?a_delay+2
+    42  031D                     l9
+    43  031D  0B97               	decfsz	?a_delay+2
+    44  031E  2B1D               	goto	l9
+    45                           ;delay.c: 25: } while(--i);
+    46  031F  0B96               	decfsz	?a_delay+1
+    47  0320  2B1B               	goto	l7
+    48                           ;delay.c: 26: } while(--cnt);
+    49  0321  0B95               	decfsz	?a_delay
+    50  0322  2B19               	goto	l4
+    51  0323  0008               	return
+
+
+HI-TECH Software PICC Macro Assembler V8.05PL2
+Symbol Table                                          Thu Nov 10 14:45:10 2022
+
+          l4 0319            l7 031B            l9 031D      ?a_delay 0015  
+      _delay 0317        status 0003  

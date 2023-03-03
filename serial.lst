@@ -1,0 +1,233 @@
+
+
+HI-TECH Software PICC Macro Assembler V8.05PL2
+Serial number: HCPIC-00000                            Thu Nov 10 14:45:13 2022
+
+Licensed to: MITSOS FOREVER
+     1                           	processor	16F84A
+     2                           	opt	pw 79
+     3                           	psect	__Z00000RS_,global,delta=1
+     4                           	psect	text0,local,class=CODE,delta=2
+     5                           	psect	text1,local,class=CODE,delta=2
+     6                           	psect	text2,local,class=CODE,delta=2
+     7                           	psect	text3,local,class=CODE,delta=2
+     8                           	psect	rbss_0,global,class=BANK0,space=1,delta=
+      +                          1
+     9  0000                     
+    10  0000                     
+    11  0000                     
+    12  0000                     
+    13  0000                     
+    14  0000                     
+    15  0000                     
+    16  0000                     
+    17  0000                     
+    18  0000                     
+    19                           
+    20                           	psect	__Z00000RS_
+    21  001A                     
+    22  001A                     
+    23                           
+    24                           	psect	text0
+    25  02C2                     _serialBegin
+    26                           ;serial.c: 52: TRISA |= 1<<4;
+    27  02C2  1683               	bsf	3,5
+    28  02C3  1605               	bsf	5,4	;volatile
+    29                           ;serial.c: 53: }
+    30  02C4  1283               	bcf	3,5
+    31  02C5  0008               	return
+    32                           
+    33                           	psect	text1
+    34  0332                     _putch
+    35                           ;	_bitno assigned to ?a_putch+0
+    36  0000                     _putch$bitno	set	?a_putch
+    37                           ;	_dly assigned to ?a_putch+1
+    38  0000                     _putch$dly	set	?a_putch+1
+    39                           ;	_c assigned to ?a_putch+2
+    40  0000                     _putch$c	set	?a_putch+2
+    41                           ;_c stored from w
+    42  0332  1283               	bcf	3,5
+    43  0333  0097               	movwf	?a_putch+2
+    44                           ;serial.c: 58: unsigned char bitno;
+    45  0334  1185               	bcf	5,3
+    46                           ;serial.c: 67: bitno = 12;
+    47  0335  300C               	movlw	12
+    48  0336  0095               	movwf	?a_putch
+    49  0337                     l5
+    50                           ;serial.c: 68: do {
+    51                           ;serial.c: 69: dly = (((10000000/9600)-(13*4*10
+      +                          000000/4000000))/(3*4*10000000/4000000));
+    52  0337  301E               	movlw	30
+    53  0338  0096               	movwf	?a_putch+1
+    54  0339                     l8
+    55                           ;serial.c: 70: do
+    56                           ;serial.c: 71: ;
+    57  0339  0B96               	decfsz	?a_putch+1
+    58  033A  2B39               	goto	l8
+    59                           ;serial.c: 73: if(c & 1)
+    60  033B  1817               	btfsc	?a_putch+2,0
+    61                           ;serial.c: 74: TxData = 1;
+    62  033C  1585               	bsf	5,3
+    63                           ;serial.c: 75: if(!(c & 1))
+    64  033D  1817               	btfsc	?a_putch+2,0
+    65  033E  2B40               	goto	l10
+    66                           ;serial.c: 76: TxData = 0;
+    67  033F  1185               	bcf	5,3
+    68  0340                     l10
+    69                           ;serial.c: 77: c = (c >> 1) | 0x80;
+    70  0340  1403               	bsf	3,0
+    71  0341  0C97               	rrf	?a_putch+2
+    72                           ;serial.c: 78: } while(--bitno);
+    73  0342  0B95               	decfsz	?a_putch
+    74  0343  2B37               	goto	l5
+    75                           ;serial.c: 79: asm("nop");
+    76  0344  0000               	nop	;#
+    77                           ;serial.c: 80: }
+    78  0345  0008               	return
+    79                           
+    80                           	psect	text2
+    81                           ;serial.c: 82: char
+    82                           ;serial.c: 83: getch(void)
+    83                           ;serial.c: 84: {
+    84  0346                     _getch
+    85                           ;	_bitno assigned to ?a_getch+0
+    86  0000                     _getch$bitno	set	?a_getch
+    87                           ;	_dly assigned to ?a_getch+1
+    88  0000                     _getch$dly	set	?a_getch+1
+    89                           ;serial.c: 85: unsigned char bitno;
+    90                           ;serial.c: 94: while(RxData)
+    91  0346                     l16
+    92                           ;serial.c: 95: continue;
+    93  0346  1283               	bcf	3,5
+    94  0347  1A05               	btfsc	5,4
+    95  0348  2B46               	goto	l16
+    96                           ;serial.c: 96: dly = (((10000000/9600)-(3*4*100
+      +                          00000/4000000))/(3*4*10000000/4000000))/2;
+    97  0349  3010               	movlw	16
+    98  034A  0096               	movwf	?a_getch+1
+    99  034B                     l20
+   100                           ;serial.c: 97: do
+   101                           ;serial.c: 98: ;
+   102  034B  0B96               	decfsz	?a_getch+1
+   103  034C  2B4B               	goto	l20
+   104                           ;serial.c: 100: if(RxData)
+   105  034D  1A05               	btfsc	5,4
+   106  034E  2B46               	goto	l16
+   107                           ;serial.c: 101: continue;
+   108                           ;serial.c: 102: bitno = 8;
+   109  034F  3008               	movlw	8
+   110  0350  0095               	movwf	?a_getch
+   111                           ;serial.c: 103: ca = 0;
+   112  0351  0192               	clrf	_ca
+   113  0352                     l24
+   114                           ;serial.c: 104: do {
+   115                           ;serial.c: 105: dly = (((10000000/9600)-(12*4*1
+      +                          0000000/4000000))/(3*4*10000000/4000000));
+   116  0352  301E               	movlw	30
+   117  0353  0096               	movwf	?a_getch+1
+   118  0354                     l27
+   119                           ;serial.c: 106: do
+   120                           ;serial.c: 107: ;
+   121  0354  0B96               	decfsz	?a_getch+1
+   122  0355  2B54               	goto	l27
+   123                           ;serial.c: 109: ca = (ca >> 1) | (RxData << 7);
+   124  0356  1003               	bcf	3,0
+   125  0357  1A05               	btfsc	5,4
+   126  0358  1403               	bsf	3,0
+   127  0359  0C92               	rrf	_ca
+   128                           ;serial.c: 110: } while(--bitno);
+   129  035A  0B95               	decfsz	?a_getch
+   130  035B  2B52               	goto	l24
+   131                           ;serial.c: 112: break;
+   132                           ;serial.c: 113: }
+   133                           ;serial.c: 116: return ca;
+   134  035C  0812               	movf	_ca,w
+   135                           ;serial.c: 117: }
+   136  035D  0008               	return
+   137                           
+   138                           	psect	text3
+   139  0000                     
+   140  0000                     
+   141  0000                     
+   142  0000                     
+   143  0000                     
+   144  0000                     
+   145  0000                     
+   146  0000                     
+   147  0000                     
+   148  0000                     
+   149  0000                     
+   150  0000                     
+   151  0000                     
+   152  0000                     
+   153  0000                     
+   154  0000                     
+   155  0000                     
+   156  0000                     
+   157  0000                     
+   158  0000                     
+   159  0000                     
+   160  0000                     
+   161  0000                     
+   162  0000                     
+   163  0000                     
+   164  0000                     
+   165  0000                     
+   166  0000                     
+   167  0000                     
+   168  0000                     
+   169  0000                     
+   170  0000                     
+   171  0000                     
+   172  0000                     
+   173  0000                     
+   174  0000                     
+   175  0000                     
+   176  0000                     
+   177  0000                     
+   178  0000                     
+   179  0000                     
+   180  0000                     
+   181  0000                     
+   182  0000                     
+   183  0000                     
+   184  0000                     
+   185  0000                     
+   186  0000                     
+   187  0000                     
+   188  0000                     
+   189  0000                     
+   190  0000                     
+   191  0000                     
+   192  0000                     
+   193  0000                     
+   194  0000                     
+   195  0000                     
+   196  0000                     
+   197  0000                     
+   198  0000                     
+   199  0000                     
+   200  0000                     
+   201  0000                     
+   202  0000                     
+   203  0000                     
+   204  0000                     
+   205  0000                     
+   206  0000                     
+   207  0000                     
+   208  0000                     
+   209  0000                     
+   210  0000                     
+   211                           
+   212                           	psect	rbss_0
+   213  0012                     _ca
+   214  0012                     	ds	1
+
+
+HI-TECH Software PICC Macro Assembler V8.05PL2
+Symbol Table                                          Thu Nov 10 14:45:13 2022
+
+          l5 0337            l8 0339      ?a_getch 0015           l10 0340  
+         l20 034B           l24 0352           l16 0346           l27 0354  
+         _ca 0012      ?a_putch 0015        _getch 0346        _putch 0332  
+      status 0003   clear_bank0 0017  _serialBegin 02C2  

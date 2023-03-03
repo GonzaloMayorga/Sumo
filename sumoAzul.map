@@ -1,0 +1,296 @@
+HI-TECH Software PICC Compiler V8.05PL2
+
+Linker command line:
+
+-z -MsumoAzul.map -ol.obj \
+  -ppowerup=00h,intentry=04h,intcode,intret,init,init23,end_init,clrtext,stringtable,pstrings,strings \
+  -pintsave_0=0Ch -ABANK0=0Ch-04Fh \
+  -prbit_0=BANK0,rbss_0=BANK0,rdata_0=BANK0,idata_0=CODE -ACOMBANK=0Ch-04Fh \
+  -ptemp=COMBANK -ACODE=0-03FFh -ACONST=0-0FFhx4 -pconfig=2007h \
+  -pidloc=2000h -AEEDATA=2100h-21FFh -peeprom_data=EEDATA \
+  -pfloat_text0=CODE,float_text1=CODE,float_text2=CODE \
+  -pfloat_text3=CODE,float_text4=CODE -pnvram=BANK0,nvram_1=BANK1 \
+  -pnvbit_0=BANK0,nvbit_1=BANK1 -Q16F84A -h+sumoAzul.sym -E \
+  -EC:\Users\Usuario\AppData\Local\Temp\_3DK.AAA -ver=PICC#V8.05PL2 \
+  C:\HT-PIC\LIB\picrt40a.obj E:\sumoAzul\XSerial-master\delay.obj \
+  E:\sumoAzul\XSerial-master\funciones.obj \
+  E:\sumoAzul\XSerial-master\hc595.obj E:\sumoAzul\XSerial-master\main.obj \
+  E:\sumoAzul\XSerial-master\pap.obj E:\sumoAzul\XSerial-master\serial.obj \
+  E:\sumoAzul\XSerial-master\srf04.obj C:\HT-PIC\LIB\pic4---u.lib \
+  C:\HT-PIC\LIB\pic40a-c.lib C:\HT-PIC\LIB\pic4---u.lib 
+
+Object code version is 3.7
+
+Machine type is 16F84A
+
+Call graph:
+
+*_main size 0,0 offset 0
+*    _setup
+*    _loop->_adelante
+*_isr
+
+		Name          Link     Load   Length Selector Space Scale
+C:\HT-PIC\LIB\picrt40a.obj
+		end_init        1B       1B        2       8     0
+E:\sumoAzul\XSerial-master\delay.obj
+		text0          317      317        D     62E     0
+E:\sumoAzul\XSerial-master\funciones.obj
+		
+E:\sumoAzul\XSerial-master\hc595.obj
+		rbss_0           D        D        1       C     1
+		temp            18       18        2      18     1
+		text3          2DD      2DD        7     5BA     0
+		text2          37A      37A       28     6F4     0
+		text1          300      300        A     600     0
+		text0          2D1      2D1        6     5A2     0
+E:\sumoAzul\XSerial-master\main.obj
+		config        2007     2007        1    400E     0
+		rbss_0           E        E        1       C     1
+		text6          2A9      2A9        2     552     0
+		text5          2AB      2AB        3     556     0
+		text4          2B2      2B2        4     564     0
+		text7          2F6      2F6        A     5EC     0
+		text3          2AE      2AE        4     55C     0
+		text0          324      324        E     648     0
+		text2          2BE      2BE        4     57C     0
+		text1          2B6      2B6        4     56C     0
+E:\sumoAzul\XSerial-master\pap.obj
+		rbss_0           F        F        3       C     1
+		temp            18       18        2      18     1
+		text7          2BA      2BA        4     574     0
+		text6          2D7      2D7        6     5AE     0
+		text5          2CB      2CB        6     596     0
+		text4          3A2      3A2       2D     744     0
+		text0          35E      35E       1C     6BC     0
+		text3          2C6      2C6        5     58C     0
+		text2          2E4      2E4        9     5C8     0
+		text1          2ED      2ED        9     5DA     0
+E:\sumoAzul\XSerial-master\serial.obj
+		rbss_0          12       12        1       C     1
+		text2          346      346       18     68C     0
+		text1          332      332       14     664     0
+		text0          2C2      2C2        4     584     0
+E:\sumoAzul\XSerial-master\srf04.obj
+		intcode          8        8        A       8     0
+		intentry         4        4        4       8     0
+		intret          12       12        5       8     0
+		intsave_0        C        C        1       C     1
+		rbss_0          13       13        2       C     1
+		temp            18       18        2      18     1
+		text2          3CF      3CF       31     79E     0
+		text1          30A      30A        D     614     0
+		intsave         1A       1A        1      1A     1
+
+C:\HT-PIC\LIB\pic4---u.lib
+
+C:\HT-PIC\LIB\pic40a-c.lib
+btemp0.obj      temp            18       18        1      18     1
+btemp1.obj      temp            18       18        2      18     1
+clrbank0.obj    init            17       17        4       8     0
+clr.obj         clrtext         1D       1D        7       8     0
+powerup.obj     powerup          0        0        4       0     0
+
+C:\HT-PIC\LIB\pic4---u.lib
+
+COMMON          rbss_0          15       15        3       C     1
+
+TOTAL		Name          Link     Load   Length
+	CLASS	BANK0    
+		intsave_0        C        C        1
+		rbss_0           D        D        B
+		temp            18       18        2
+		intsave         1A       1A        1
+
+	CLASS	COMBANK  
+
+	CLASS	CODE     
+		intcode          8        8        A
+		intentry         4        4        4
+		intret          12       12        5
+		powerup          0        0        4
+		clrtext         1D       1D        7
+		end_init        1B       1B        2
+		init            17       17        4
+		text0          317      317        D
+		text3          2DD      2DD        7
+		text2          37A      37A       28
+		text1          300      300        A
+		text0          2D1      2D1        6
+		text6          2A9      2A9        2
+		text5          2AB      2AB        3
+		text4          2B2      2B2        4
+		text7          2F6      2F6        A
+		text3          2AE      2AE        4
+		text0          324      324        E
+		text2          2BE      2BE        4
+		text1          2B6      2B6        4
+		text7          2BA      2BA        4
+		text6          2D7      2D7        6
+		text5          2CB      2CB        6
+		text4          3A2      3A2       2D
+		text0          35E      35E       1C
+		text3          2C6      2C6        5
+		text2          2E4      2E4        9
+		text1          2ED      2ED        9
+		text2          346      346       18
+		text1          332      332       14
+		text0          2C2      2C2        4
+		text2          3CF      3CF       31
+		text1          30A      30A        D
+
+	CLASS	CONST    
+
+	CLASS	EEDATA   
+
+	CLASS	ENTRY    
+
+	CLASS	BANK3    
+
+	CLASS	BANK2    
+
+	CLASS	BANK1    
+
+	CLASS	STRING   
+
+	CLASS	IDLOC    
+
+	CLASS	CONFIG   
+		config        2007     2007        1
+
+
+
+SEGMENTS	Name		Load	Length	 Top	Selector    Space Class
+
+		powerup         000000	000004	000004	       0       0  CODE    
+		intentry        000004	000020	000024	       8       0  CODE    
+		intsave_0       00000C	00000C	000018	       C       1  BANK0   
+		temp            000018	000002	00001A	      18       1  COMBANK 
+		nvram           00001A	000001	00001B	      1A       1  BANK0   
+		text6           0002A9	000002	0002AB	     552       0  CODE    
+		text5           0002AB	000003	0002AE	     556       0  CODE    
+		text3           0002AE	000004	0002B2	     55C       0  CODE    
+		text4           0002B2	000004	0002B6	     564       0  CODE    
+		text1           0002B6	000004	0002BA	     56C       0  CODE    
+		text7           0002BA	000004	0002BE	     574       0  CODE    
+		text2           0002BE	000004	0002C2	     57C       0  CODE    
+		text0           0002C2	000004	0002C6	     584       0  CODE    
+		text3           0002C6	000005	0002CB	     58C       0  CODE    
+		text5           0002CB	000006	0002D1	     596       0  CODE    
+		text0           0002D1	000006	0002D7	     5A2       0  CODE    
+		text6           0002D7	000006	0002DD	     5AE       0  CODE    
+		text3           0002DD	000007	0002E4	     5BA       0  CODE    
+		text2           0002E4	000009	0002ED	     5C8       0  CODE    
+		text1           0002ED	000009	0002F6	     5DA       0  CODE    
+		text7           0002F6	00000A	000300	     5EC       0  CODE    
+		text1           000300	00000A	00030A	     600       0  CODE    
+		text1           00030A	00000D	000317	     614       0  CODE    
+		text0           000317	00000D	000324	     62E       0  CODE    
+		text0           000324	00000E	000332	     648       0  CODE    
+		text1           000332	000014	000346	     664       0  CODE    
+		text2           000346	000018	00035E	     68C       0  CODE    
+		text0           00035E	00001C	00037A	     6BC       0  CODE    
+		text2           00037A	000028	0003A2	     6F4       0  CODE    
+		text4           0003A2	00002D	0003CF	     744       0  CODE    
+		text2           0003CF	000031	000400	     79E       0  CODE    
+		config          002007	000001	002008	    400E       0  CONFIG  
+
+
+UNUSED ADDRESS RANGES
+
+	BANK0            001B-004F
+	CODE             0024-02A8
+	COMBANK          001B-004F
+	CONST            0024-02A8
+	EEDATA           2100-21FF
+
+                                  Symbol Table
+
+?a_buff_pap          rbss_0      0015  ?a_convPasoSecuencia rbss_0      0015
+?a_delay             rbss_0      0015  ?a_getStepM1         rbss_0      0015
+?a_getch             rbss_0      0015  ?a_hc595Data         rbss_0      0015
+?a_papMove           rbss_0      0015  ?a_papMoveManual     rbss_0      0015
+?a_putch             rbss_0      0015  ?a_srf04GetDistance  rbss_0      0015
+__Bnvbit_0           nvbit_0     001A  __Bnvbit_1           nvbit_1     001A
+__Bnvbit_2           nvbit_2     001A  __Bnvbit_3           nvbit_3     001A
+__Brbit_0            rbit_0      000D  __Brbit_1            rbit_1      001A
+__Brbit_2            rbit_2      001A  __Brbit_3            rbit_3      001A
+__H__Z00000RS_       __Z00000RS_ 001A  __Hclrtext           clrtext     0024
+__Hcode              code        001A  __Hcommon_ram        common_ram  001A
+__Hconfig            config      2008  __Heeprom_data       eeprom_data 2100
+__Hend_init          end_init    001D  __Hfloat_text0       float_text0 0024
+__Hfloat_text1       float_text1 0024  __Hfloat_text2       float_text2 0024
+__Hfloat_text3       float_text3 0024  __Hfloat_text4       float_text4 0024
+__Hidata_0           idata_0     0024  __Hidata_1           idata_1     001A
+__Hidata_2           idata_2     001A  __Hidata_3           idata_3     001A
+__Hidloc             idloc       2000  __Hinit              init        001B
+__Hinit23            init23      001B  __Hintcode           intcode     0012
+__Hintentry          intentry    0008  __Hintret            intret      0017
+__Hintsave           intsave     001A  __Hintsave_0         intsave_0   000D
+__Hintsave_1         intsave_1   001A  __Hintsave_2         intsave_2   001A
+__Hintsave_3         intsave_3   001A  __Hnvbit_0           nvbit_0     00D0
+__Hnvbit_1           nvbit_1     00D0  __Hnvbit_2           nvbit_2     00D0
+__Hnvbit_3           nvbit_3     00D0  __Hnvram             nvram       001A
+__Hnvram_1           nvram_1     001A  __Hnvram_2           nvram_2     001A
+__Hnvram_3           nvram_3     001A  __Hpowerup           powerup     0004
+__Hpstrings          pstrings    0024  __Hrbit_0            rbit_0      0068
+__Hrbit_1            rbit_1      00D0  __Hrbit_2            rbit_2      00D0
+__Hrbit_3            rbit_3      00D0  __Hrbss_0            rbss_0      0018
+__Hrbss_1            rbss_1      001A  __Hrbss_2            rbss_2      001A
+__Hrbss_3            rbss_3      001A  __Hrdata_0           rdata_0     0018
+__Hrdata_1           rdata_1     001A  __Hrdata_2           rdata_2     001A
+__Hrdata_3           rdata_3     001A  __Hstrings           strings     0024
+__Hstringtable       stringtable 0024  __Hstruct            struct      001B
+__Htemp              temp        001A  __Htext              text        001A
+__Hvectors           vectors     0024  __L__Z00000RS_       __Z00000RS_ 001A
+__Lclrtext           clrtext     001D  __Lcode              code        001A
+__Lcommon_ram        common_ram  001A  __Lconfig            config      2007
+__Leeprom_data       eeprom_data 2100  __Lend_init          end_init    001B
+__Lfloat_text0       float_text0 0024  __Lfloat_text1       float_text1 0024
+__Lfloat_text2       float_text2 0024  __Lfloat_text3       float_text3 0024
+__Lfloat_text4       float_text4 0024  __Lidata_0           idata_0     0024
+__Lidata_1           idata_1     001A  __Lidata_2           idata_2     001A
+__Lidata_3           idata_3     001A  __Lidloc             idloc       2000
+__Linit              init        0017  __Linit23            init23      001B
+__Lintcode           intcode     0008  __Lintentry          intentry    0004
+__Lintret            intret      0012  __Lintsave           intsave     001A
+__Lintsave_0         intsave_0   000C  __Lintsave_1         intsave_1   001A
+__Lintsave_2         intsave_2   001A  __Lintsave_3         intsave_3   001A
+__Lnvbit_0           nvbit_0     00D0  __Lnvbit_1           nvbit_1     00D0
+__Lnvbit_2           nvbit_2     00D0  __Lnvbit_3           nvbit_3     00D0
+__Lnvram             nvram       001A  __Lnvram_1           nvram_1     001A
+__Lnvram_2           nvram_2     001A  __Lnvram_3           nvram_3     001A
+__Lpowerup           powerup     0000  __Lpstrings          pstrings    0024
+__Lrbit_0            rbit_0      0068  __Lrbit_1            rbit_1      00D0
+__Lrbit_2            rbit_2      00D0  __Lrbit_3            rbit_3      00D0
+__Lrbss_0            rbss_0      000D  __Lrbss_1            rbss_1      001A
+__Lrbss_2            rbss_2      001A  __Lrbss_3            rbss_3      001A
+__Lrdata_0           rdata_0     0018  __Lrdata_1           rdata_1     001A
+__Lrdata_2           rdata_2     001A  __Lrdata_3           rdata_3     001A
+__Lstrings           strings     0024  __Lstringtable       stringtable 0024
+__Lstruct            struct      001B  __Ltemp              temp        0018
+__Ltext              text        001A  __Lvectors           vectors     0024
+__S0                 (abs)       2100  __S1                 (abs)       001B
+_adelante            text1       02B6  _atras               text2       02BE
+_buff_pap            text2       02E4  _ca                  rbss_0      0012
+_cont                rbss_0      000E  _convPasoSecuencia   text0       035E
+_dSrf04              rbss_0      0013  _delay               text0       0317
+_derecha             text4       02B2  _exit                init        0017
+_fpa                 rbss_0      000D  _getStepM1           text3       02C6
+_getch               text2       0346  _hc595Begin          text0       02D1
+_hc595Data           text2       037A  _hc595End            text3       02DD
+_hc595Init           text1       0300  _isr                 intcode     0008
+_izquierda           text3       02AE  _ld                  rbss_0      000F
+_loop                text6       02A9  _main                text7       02F6
+_mxCiclo             rbss_0      0010  _pAnterior           rbss_0      0011
+_papBegin            text1       02ED  _papLedTest          text7       02BA
+_papMove             text4       03A2  _papMoveManual       text6       02D7
+_papStop             text5       02CB  _putch               text1       0332
+_serialBegin         text0       02C2  _setup               text0       0324
+_srf04Begin          text1       030A  _srf04GetDistance    text2       03CF
+_stop                text5       02AB  clear_bank0          init        0017
+clear_ram            clrtext     0020  int_entry            intentry    0004
+int_func             intcode     0008  int_restore          intret      0012
+intlevel0            intentry    0004  intlevel1            intentry    0004
+powerup              powerup     0000  start                init        0017
+used_btemp0          (abs)       0001  used_btemp1          (abs)       0001
